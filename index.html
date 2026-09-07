@@ -11,6 +11,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;900&display=swap');
         body {
             font-family: 'Vazirmatn', sans-serif;
+            scroll-behavior: smooth;
         }
     </style>
 </head>
@@ -40,7 +41,7 @@
                 <a href="#" class="hover:text-blue-600 transition">صفحه اصلی</a>
                 <a href="#products" class="hover:text-blue-600 transition">فروشگاه</a>
                 <a href="#net-services" class="hover:text-blue-600 transition font-bold text-blue-600">کافی‌نت آنلاین</a>
-                <a href="#services" class="hover:text-blue-600 transition">تعمیرات</a>
+                <a href="#services" class="hover:text-blue-600 transition">تعمیرات و خدمات</a>
                 <a href="#contact" class="hover:text-blue-600 transition">تماس با ما</a>
             </nav>
             <div class="flex items-center space-x-3 space-x-reverse">
@@ -219,79 +220,106 @@
         </div>
     </section>
 
-    <!-- Services Section (Repair/Mobile & Detailed lists requested) -->
+    <!-- Main Navigation / Clickable Cards Section -->
     <section id="services" class="py-16 bg-slate-50">
         <div class="container mx-auto px-4">
             <div class="text-center mb-12">
-                <h3 class="text-3xl font-black text-slate-900">خدمات سخت‌افزاری و نرم‌افزاری تخصصی</h3>
-                <p class="text-slate-500 mt-2">همراه فنی شما در مغازه بابا ابی</p>
+                <h3 class="text-3xl font-black text-slate-900">خدمات تخصصی موبایل بابا ابی</h3>
+                <p class="text-slate-500 mt-2">برای مشاهده جزئیات روی بخش مورد نظر کلیک کنید</p>
             </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-                <!-- Hardware Details Card -->
-                <div class="p-8 rounded-2xl bg-white border border-slate-200 shadow-sm transition">
-                    <div class="bg-blue-100 text-blue-600 w-16 h-16 rounded-2xl flex items-center justify-center text-2xl mb-6 shadow-inner">
-                        <i class="fa-solid fa-screwdriver-wrench"></i>
-                    </div>
-                    <h4 class="font-bold text-2xl mb-4 text-slate-900">بخش سخت‌افزار (تامین و تعویض ال‌سی‌دی)</h4>
-                    <p class="text-slate-500 text-sm mb-4">عرضه و تعویض تخصصی انواع ال‌سی‌دی اورجینال و شرکتی:</p>
-                    <div class="space-y-3 text-sm text-slate-700">
-                        <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
-                            <span class="font-bold text-blue-900 block mb-1">سامسونگ:</span>
-                            <p class="text-xs text-slate-600 leading-relaxed">سری A (از A10، A10s، A11، A12 تا A15، A25، A35، A55 و A73) + سری M و J + سری پرچمدار S و Note</p>
-                        </div>
-                        <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
-                            <span class="font-bold text-blue-900 block mb-1">شیائومی:</span>
-                            <p class="text-xs text-slate-600 leading-relaxed">سری Redmi (تنوع مدل‌های 9، 10، 12، 13 و نوت‌ها) + سری POCO (M3، X3، F3 و...) + سری Mi</p>
-                        </div>
-                        <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
-                            <span class="font-bold text-blue-900 block mb-1">آیفون:</span>
-                            <p class="text-xs text-slate-600 leading-relaxed">انواع مدل‌های آیفون از سری 6 و 7 و 8 گرفته تا آیفون X، 11، 12، 13، 14 و 15</p>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- Software Details Card -->
-                <div class="p-8 rounded-2xl bg-white border border-slate-200 shadow-sm transition">
-                    <div class="bg-blue-100 text-blue-600 w-16 h-16 rounded-2xl flex items-center justify-center text-2xl mb-6 shadow-inner">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                <!-- Card 1: Software Services (Links to #software-section) -->
+                <a href="#software-section" class="p-8 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:border-blue-500 transition text-center group block">
+                    <div class="bg-blue-100 text-blue-600 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto text-2xl mb-6 shadow-inner group-hover:bg-blue-600 group-hover:text-white transition">
                         <i class="fa-solid fa-laptop-code"></i>
                     </div>
-                    <h4 class="font-bold text-2xl mb-4 text-slate-900">بخش نرم‌افزار (خدمات تخصصی موبایل)</h4>
-                    <p class="text-slate-500 text-sm mb-4">انجام کلیه خدمات نرم‌افزاری پیشرفته:</p>
-                    <ul class="space-y-2.5 text-sm text-slate-700">
-                        <li class="flex items-center gap-2 bg-slate-50 p-2.5 rounded-xl"><i class="fa-solid fa-check text-blue-600"></i><span><strong>FRP:</strong> برداشتن گوگل اکانت انواع گوشی‌ها</span></li>
-                        <li class="flex items-center gap-2 bg-slate-50 p-2.5 rounded-xl"><i class="fa-solid fa-check text-blue-600"></i><span><strong>آیکلود:</strong> خدمات تخصصی و امنیتی حساب‌های آیفون</span></li>
-                        <li class="flex items-center gap-2 bg-slate-50 p-2.5 rounded-xl"><i class="fa-solid fa-check text-blue-600"></i><span><strong>اپل آیدی:</strong> ساخت اپل آیدی معتبر و شخصی</span></li>
-                        <li class="flex items-center gap-2 bg-slate-50 p-2.5 rounded-xl"><i class="fa-solid fa-check text-blue-600"></i><span><strong>اشتراک برنامه‌های ایرانی برای آیفون</strong></span></li>
-                        <li class="flex items-center gap-2 bg-slate-50 p-2.5 rounded-xl"><i class="fa-solid fa-check text-blue-600"></i><span><strong>نصب برنامه‌ها و بازی‌ها:</strong> پکیج کامل اندروید و آیفون</span></li>
-                        <li class="flex items-center gap-2 bg-slate-50 p-2.5 rounded-xl"><i class="fa-solid fa-check text-blue-600"></i><span><strong>VPN و ابزارهای اتصال:</strong> راه‌اندازی ابزارهای ارتباطی امن</span></li>
-                    </ul>
-                </div>
+                    <h4 class="font-bold text-xl mb-3 text-slate-900 group-hover:text-blue-600 transition">خدمات فوری نرم‌افزاری</h4>
+                    <p class="text-slate-500 text-sm leading-relaxed">کلیک کنید برای مشاهده لیست خدمات نرم‌افزاری، FRP، اپل آیدی، آیکلود و VPN.</p>
+                    <span class="inline-block mt-4 text-xs font-bold text-blue-600">مشاهده جزئیات <i class="fa-solid fa-arrow-down mr-1"></i></span>
+                </a>
+
+                <!-- Card 2: Hardware / LCDs (Links to #hardware-section) -->
+                <a href="#hardware-section" class="p-8 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:border-blue-500 transition text-center group block">
+                    <div class="bg-blue-100 text-blue-600 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto text-2xl mb-6 shadow-inner group-hover:bg-blue-600 group-hover:text-white transition">
+                        <i class="fa-solid fa-screwdriver-wrench"></i>
+                    </div>
+                    <h4 class="font-bold text-xl mb-3 text-slate-900 group-hover:text-blue-600 transition">تعمیرات تخصصی سخت‌افزار</h4>
+                    <p class="text-slate-500 text-sm leading-relaxed">کلیک کنید برای مشاهده لیست انواع ال‌سی‌دی‌های سامسونگ، شیائومی و آیفون.</p>
+                    <span class="inline-block mt-4 text-xs font-bold text-blue-600">مشاهده جزئیات <i class="fa-solid fa-arrow-down mr-1"></i></span>
+                </a>
+
+                <!-- Card 3: Buy & Sell (Links to #products) -->
+                <a href="#products" class="p-8 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:border-blue-500 transition text-center group block">
+                    <div class="bg-blue-100 text-blue-600 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto text-2xl mb-6 shadow-inner group-hover:bg-blue-600 group-hover:text-white transition">
+                        <i class="fa-solid fa-mobile-button"></i>
+                    </div>
+                    <h4 class="font-bold text-xl mb-3 text-slate-900 group-hover:text-blue-600 transition">خرید و فروش موبایل</h4>
+                    <p class="text-slate-500 text-sm leading-relaxed">کلیک کنید برای مشاهده لیست گوشی‌ها و مدل‌های پرچمدار روز بازار.</p>
+                    <span class="inline-block mt-4 text-xs font-bold text-blue-600">مشاهده لیست گوشی‌ها <i class="fa-solid fa-arrow-down mr-1"></i></span>
+                </a>
             </div>
 
-            <!-- General Repair/Buy Overview -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="p-6 rounded-2xl bg-white border border-slate-200 text-center">
-                    <div class="text-blue-600 text-2xl mb-3"><i class="fa-solid fa-mobile-button"></i></div>
-                    <h5 class="font-bold text-lg mb-2 text-slate-900">خرید و فروش موبایل</h5>
-                    <p class="text-slate-500 text-xs">معامله امن دستگاه‌های آکبند و کارکرده</p>
+            <!-- Detailed Target Section 1: Software -->
+            <div id="software-section" class="p-8 rounded-3xl bg-white border border-blue-200 shadow-md mb-12 scroll-mt-28">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="bg-blue-600 text-white p-3 rounded-xl text-xl"><i class="fa-solid fa-laptop-code"></i></div>
+                    <h4 class="font-bold text-2xl text-slate-900">لیست خدمات فوری نرم‌افزاری</h4>
                 </div>
-                <div class="p-6 rounded-2xl bg-white border border-slate-200 text-center">
-                    <div class="text-blue-600 text-2xl mb-3"><i class="fa-solid fa-screwdriver-wrench"></i></div>
-                    <h5 class="font-bold text-lg mb-2 text-slate-900">تعمیرات تخصصی سخت‌افزار</h5>
-                    <p class="text-slate-500 text-xs">تعویض قطعات با ضمانت اصالت</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200"><strong class="text-blue-900 block mb-1">FRP (گوگل اکانت)</strong><span class="text-xs text-slate-600">برداشتن و دور زدن قفل جیمیل بعد از ریست</span></div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200"><strong class="text-blue-900 block mb-1">آیکلود (iCloud)</strong><span class="text-xs text-slate-600">خدمات تخصصی و امنیتی حساب‌های آیفون</span></div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200"><strong class="text-blue-900 block mb-1">اپل آیدی (Apple ID)</strong><span class="text-xs text-slate-600">ساخت اپل‌آیدی معتبر، شخصی و امن</span></div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200"><strong class="text-blue-900 block mb-1">اشتراک برنامه‌های ایرانی</strong><span class="text-xs text-slate-600">دسترسی به استورها و برنامه‌های ایرانی iOS</span></div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200"><strong class="text-blue-900 block mb-1">نصب بازی و برنامه</strong><span class="text-xs text-slate-600">پکیج کامل نرم‌افزار و بازی‌های روز اندروید/آیفون</span></div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200"><strong class="text-blue-900 block mb-1">VPN و ابزارهای اتصال</strong><span class="text-xs text-slate-600">راه‌اندازی و تنظیم فیلترشکن و ابزارهای امن</span></div>
                 </div>
-                <div class="p-6 rounded-2xl bg-white border border-slate-200 text-center">
-                    <div class="text-blue-600 text-2xl mb-3"><i class="fa-solid fa-laptop-code"></i></div>
-                    <h5 class="font-bold text-lg mb-2 text-slate-900">خدمات فوری نرم‌افزاری</h5>
-                    <p class="text-slate-500 text-xs">فلش، آنلاک و نصب نرم‌افزار</p>
+            </div>
+            <!-- Detailed Target Section 2: Hardware (LCDs) -->
+            <div id="hardware-section" class="p-8 rounded-3xl bg-white border border-blue-200 shadow-md scroll-mt-28">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="bg-blue-600 text-white p-3 rounded-xl text-xl"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+                    <h4 class="font-bold text-2xl text-slate-900">لیست کامل ال‌سی‌دی‌ها (سخت‌افزار)</h4>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Samsung LCDs -->
+                    <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200">
+                        <h5 class="font-bold text-blue-900 text-lg mb-3 pb-2 border-b border-slate-200">سامسونگ</h5>
+                        <p class="text-xs text-slate-700 leading-relaxed">
+                            <strong>سری A:</strong> A10، A10s، A11، A12، A13، A14، A15، A20، A20s، A21s، A22، A23، A24، A25، A30، A30s، A31، A32، A33، A34، A35، A50، A51، A52، A53، A54، A55، A70، A71، A72، A73<br><br>
+                            <strong>سری M و J:</strong> J2 Pro، J5 Pro، J7 Pro، J4، J6، M11، M12، M21، M31، M32<br><br>
+                            <strong>سری پرچمدار:</strong> S8 تا S24 (و اولترا)، Note 8 تا Note 20
+                        </p>
+                    </div>
+                    <!-- Xiaomi LCDs -->
+                    <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200">
+                        <h5 class="font-bold text-blue-900 text-lg mb-3 pb-2 border-b border-slate-200">شیائومی</h5>
+                        <p class="text-xs text-slate-700 leading-relaxed">
+                            <strong>سری Redmi:</strong> Redmi 9، 9A، 9T، 10، 10C، 12، 13C، Note 8، Note 9، Note 10، Note 10 Pro، Note 11، Note 11 Pro، Note 12، Note 13<br><br>
+                            <strong>سری POCO:</strong> M3، M4 Pro، X3، X3 Pro، X4 Pro، X5 Pro، F3، F4<br><br>
+                            <strong>سری Mi:</strong> Mi 11 Lite، Mi 12 Lite
+                        </p>
+                    </div>
+
+                    <!-- Apple LCDs -->
+                    <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200">
+                        <h5 class="font-bold text-blue-900 text-lg mb-3 pb-2 border-b border-slate-200">آیفون (اپل)</h5>
+                        <p class="text-xs text-slate-700 leading-relaxed">
+                            آیفون 6، 6s، 7، 8، 7 پلاس، 8 پلاس<br>
+                            آیفون X، XR، XS، XS Max<br>
+                            آیفون 11، 11 پرو، 11 پرو مکس<br>
+                            آیفون 12، 12 پرو، 12 پرو مکس<br>
+                            آیفون 13، 13 پرو، 13 پرو مکس<br>
+                            آیفون 14، 14 پرو، 14 پرو مکس<br>
+                            آیفون 15، 15 پرو، 15 پرو مکس
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-
     <!-- Products Section (Flagships Only) -->
-    <section id="products" class="py-16 bg-white">
+    <section id="products" class="py-16 bg-white scroll-mt-20">
         <div class="container mx-auto px-4">
             <div class="text-center mb-12">
                 <span class="bg-blue-100 text-blue-600 text-xs px-3 py-1 rounded-full font-bold">بخش تجاری</span>
@@ -319,7 +347,6 @@
                         <a href="tel:09333472977" class="bg-blue-600 text-white px-4 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 transition shadow-md shadow-blue-600/20">تماس بگیرید</a>
                     </div>
                 </div>
-
                 <!-- Flagship Brand 2: Samsung -->
                 <div class="bg-slate-50 rounded-2xl shadow-sm overflow-hidden hover:shadow-xl transition border border-slate-200/60 p-6 flex flex-col justify-between">
                     <div>
@@ -339,7 +366,6 @@
                         <a href="tel:09333472977" class="bg-blue-600 text-white px-4 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 transition shadow-md shadow-blue-600/20">تماس بگیرید</a>
                     </div>
                 </div>
-
                 <!-- Flagship Brand 3: Xiaomi -->
                 <div class="bg-slate-50 rounded-2xl shadow-sm overflow-hidden hover:shadow-xl transition border border-slate-200/60 p-6 flex flex-col justify-between">
                     <div>
@@ -361,13 +387,12 @@
             </div>
         </div>
     </section>
-
     <!-- Footer / Contact -->
     <footer id="contact" class="bg-slate-900 text-white pt-16 pb-8 border-t border-slate-800">
         <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
             <div>
                 <h4 class="text-2xl font-black mb-4 text-blue-400">بابا ابی و کافی‌نت آنلاین</h4>
-                <p class="text-slate-400 text-sm leading-relaxed">مرکز تخصصی خرید و فروش موبایل، لوازم جانبی و انجام کلیه خدمات اینترنتی، مالیاتی و ثبت‌نام‌های دولتی با مدیریت امیری در اهواز.</p>
+                <p class="text-slate-400 text-sm leading-relaxed">مرکز تخصصی خرید و فروش موبایل، لوازم جانبی و انجام کلیه خدمات اینترنتی، مالیاتی و ثبت‌نام‌های دولتی با مدیریت در اهواز[cite: 2].</p>
             </div>
             <div>
                 <h4 class="text-lg font-bold mb-4 text-white">دسترسی سریع</h4>
@@ -375,13 +400,13 @@
                     <li><a href="#" class="hover:text-blue-400 transition">صفحه اصلی</a></li>
                     <li><a href="#net-services" class="hover:text-blue-400 transition">کافی‌نت آنلاین</a></li>
                     <li><a href="#products" class="hover:text-blue-400 transition">فروشگاه موبایل</a></li>
-                    <li><a href="#services" class="hover:text-blue-400 transition">تعمیرات</a></li>
+                    <li><a href="#services" class="hover:text-blue-400 transition">تعمیرات و خدمات</a></li>
                 </ul>
             </div>
             <div>
                 <h4 class="text-lg font-bold mb-4 text-white">ارتباط با مدیریت (امیری)</h4>
                 <p class="text-slate-400 text-sm mb-3"><i class="fa-solid fa-phone ml-2 text-blue-400"></i> تلفن تماس: <span dir="ltr" class="inline-block">09333472977</span></p>
-                <p class="text-slate-400 text-sm mb-4 leading-relaxed"><i class="fa-solid fa-location-dot ml-2 text-blue-400"></i> آدرس: خوزستان، اهواز، کمپلو جنوبی (خشایار)، خیابان زینب بین اسلامی و میمندی</p>
+                <p class="text-slate-400 text-sm mb-4 leading-relaxed"><i class="fa-solid fa-location-dot ml-2 text-blue-400"></i> آدرس: خوزستان، اهواز، کمپلو جنوبی (خشایار)، خیابان زینب بین اسلامی و میمندی[cite: 2]</p>
                 <div class="flex space-x-3 space-x-reverse text-xl pt-2">
                     <a href="https://rubika.ir/rezasavary69" target="_blank" class="bg-slate-800 p-3 rounded-xl text-slate-300 hover:text-white hover:bg-purple-600 transition flex items-center gap-2 text-sm">
                         <i class="fa-solid fa-r text-lg"></i>
@@ -391,7 +416,7 @@
             </div>
         </div>
         <div class="border-t border-slate-800/80 pt-6 text-center text-slate-500 text-xs">
-            تمامی حقوق و امتیازات این وب‌سایت متعلق به فروشگاه موبایل و کافی‌نت بابا ابی (مدیریت: امیری) می‌باشد. © ۱۴۰۵
+            تمامی حقوق و امتیازات این وب‌سایت متعلق به فروشگاه موبایل و کافی‌نت بابا ابی می‌باشد. © ۱۴۰۵
         </div>
     </footer>
 
