@@ -13,15 +13,29 @@
             font-family: 'Vazirmatn', sans-serif;
             scroll-behavior: smooth;
         }
+        @keyframes pulse-fast {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+        .animate-pulse-fast {
+            animation: pulse-fast 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800">
 
-    <!-- Top Bar -->
+    <!-- Top Bar with Live Status -->
     <div class="bg-blue-900 text-blue-100 text-xs py-2">
-        <div class="container mx-auto px-4 flex justify-between items-center">
-            <div><i class="fa-solid fa-phone-volume ml-1"></i> مشاوره و پشتیبانی: ۰۹۳۸۷۷۳۹۴۵۴ - ۰۹۳۳۳۴۷۲۹۷۷</div>
-            <div class="hidden sm:block">خوزستان، اهواز، کمپلو جنوبی (خشایار) | خدمات آنلاین و حضوری</div>
+        <div class="container mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-2">
+            <div class="flex items-center gap-3">
+                <span><i class="fa-solid fa-phone-volume ml-1"></i> مشاوره و پشتیبانی: ۰۹۳۸۷۷۳۹۴۵۴ - ۰۹۳۳۳۴۷۲۹۷۷</span>
+                <!-- Live Shop Status Indicator -->
+                <div class="hidden md:flex items-center gap-1.5 bg-blue-800/80 px-2.5 py-1 rounded-full border border-blue-700">
+                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse-fast inline-block"></span>
+                    <span class="text-emerald-300 font-bold">مغازه باز است (آماده خدمت حضوری)</span>
+                </div>
+            </div>
+            <div>خوزستان، اهواز، کمپلو جنوبی (خشایار)</div>
         </div>
     </div>
 
@@ -37,14 +51,21 @@
                     <span class="text-xs text-slate-500 font-medium">موبایل، نرم‌افزار و کافی‌نت آنلاین (مدیریت: امیری)</span>
                 </div>
             </div>
-            <nav class="hidden md:flex space-x-6 space-x-reverse font-medium text-slate-600 text-sm">
+            <nav class="hidden lg:flex space-x-4 space-x-reverse font-medium text-slate-600 text-sm">
                 <a href="#" class="hover:text-blue-600 transition">صفحه اصلی</a>
                 <a href="#products" class="hover:text-blue-600 transition">فروشگاه</a>
+                <a href="#accessories" class="hover:text-blue-600 transition text-indigo-600 font-bold">لوازم جانبی</a>
                 <a href="#net-services" class="hover:text-blue-600 transition font-bold text-blue-600">کافی‌نت آنلاین</a>
-                <a href="#services" class="hover:text-blue-600 transition">تعمیرات و خدمات</a>
-                <a href="#contact" class="hover:text-blue-600 transition">تماس با ما</a>
+                <a href="#services" class="hover:text-blue-600 transition">تعمیرات</a>
+                <a href="#articles" class="hover:text-blue-600 transition text-amber-600 font-bold">مقالات</a>
+                <a href="#club" class="hover:text-blue-600 transition text-emerald-600 font-bold">باشگاه مشتریان</a>
             </nav>
-            <div class="flex items-center space-x-3 space-x-reverse">
+            <div class="flex items-center space-x-2 space-x-reverse">
+                <!-- Music Player Toggle Button -->
+                <button onclick="toggleMusic()" id="musicBtn" class="bg-slate-100 hover:bg-slate-200 text-slate-700 p-2.5 rounded-xl text-sm transition flex items-center gap-1.5 border border-slate-200" title="پخش موزیک ملایم">
+                    <i id="musicIcon" class="fa-solid fa-music text-blue-600"></i>
+                    <span class="text-xs hidden sm:inline" id="musicText">موزیک ملایم</span>
+                </button>
                 <a href="tel:09333472977" class="bg-blue-600 text-white px-4 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 transition flex items-center gap-2">
                     <i class="fa-solid fa-phone"></i>
                     <span>تماس سریع</span>
@@ -53,30 +74,177 @@
         </div>
     </header>
 
+    <!-- Hidden Audio Element (Ambient Background Music) -->
+    <audio id="bgMusic" loop>
+        <source src="https://actions.google.com/sounds/v1/ambiences/relaxing_spa.ogg" type="audio/ogg">
+        مرورگر شما از پخش صوت پشتیبانی نمی‌کند.
+    </audio>
+
     <!-- Hero Section -->
     <section class="bg-gradient-to-l from-blue-900 via-blue-800 to-indigo-900 text-white py-20 relative overflow-hidden">
         <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between relative z-10">
             <div class="md:w-7/12 mb-10 md:mb-0 text-center md:text-right">
                 <span class="bg-blue-600/60 border border-blue-400/30 text-blue-200 text-xs font-semibold px-4 py-1.5 rounded-full inline-block mb-4">مرکز تخصصی موبایل و کافی‌نت آنلاین بابا ابی (مدیریت: امیری)</span>
-                <h2 class="text-4xl md:text-6xl font-black mt-2 mb-6 leading-tight">خدمات جامع موبایل، سخت‌افزار و نرم افزار و کافی‌نت آنلاین</h2>
-                <p class="text-blue-100 mb-8 text-lg font-light leading-relaxed">انجام کلیه خدمات اینترنتی، ثبت‌نام‌های دولتی، مالیاتی، خودرو، فروش لوازم جانبی و گوشی با سرعت و دقت بالا.</p>
-                <div class="flex justify-center md:justify-start space-x-4 space-x-reverse">
+                <h2 class="text-4xl md:text-6xl font-black mt-2 mb-6 leading-tight">خدمات جامع موبایل، سخت‌افزار، لوازم جانبی و کافی‌نت آنلاین</h2>
+                <p class="text-blue-100 mb-8 text-lg font-light leading-relaxed">انجام کلیه خدمات اینترنتی، ثبت‌نام‌های دولتی، مالیاتی، خودرو، فروش کامل لوازم جانبی موبایل و کامپیوتر.</p>
+                <div class="flex flex-wrap justify-center md:justify-start gap-4">
+                    <a href="#accessories" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-8 py-3.5 rounded-xl shadow-xl transition">مشاهده لوازم جانبی</a>
                     <a href="#net-services" class="bg-white text-blue-900 font-bold px-8 py-3.5 rounded-xl shadow-xl hover:bg-blue-50 transition">خدمات کافی‌نت آنلاین</a>
-                    <a href="#products" class="border border-blue-400 text-white font-bold px-8 py-3.5 rounded-xl hover:bg-blue-800/50 transition">مشاهده محصولات</a>
+                    <a href="#order-form" class="bg-purple-600 text-white font-bold px-8 py-3.5 rounded-xl shadow-xl hover:bg-purple-700 transition">ثبت سفارش سریع</a>
                 </div>
             </div>
             <div class="md:w-4/12 flex justify-center">
-                <div class="bg-white/10 backdrop-blur-md p-8 rounded-3xl border border-white/20 shadow-2xl text-center w-full max-w-sm">
-                    <i class="fa-solid fa-laptop-file text-8xl text-blue-300 mb-6 drop-shadow-lg"></i>
-                    <h3 class="text-xl font-bold mb-2">کافی‌نت آنلاین بابا ابی</h3>
+                <div class="bg-white/15 backdrop-blur-md p-8 rounded-3xl border border-white/20 shadow-2xl text-center w-full max-w-sm">
+                    <i class="fa-solid fa-headphones text-8xl text-indigo-300 mb-6 drop-shadow-lg"></i>
+                    <h3 class="text-xl font-bold mb-2">لوازم جانبی و موبایل بابا ابی</h3>
                     <p class="text-sm text-blue-200">مدیریت: بابا ابی | تلفن: 09387739454</p>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- NEW Accessories Section (Requested Section) -->
+    <section id="accessories" class="py-16 bg-white scroll-mt-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <span class="bg-indigo-100 text-indigo-700 text-xs px-3 py-1 rounded-full font-bold">فروشگاه تخصصی قطعات و ملزومات</span>
+                <h3 class="text-3xl font-black text-slate-900 mt-2">لیست کامل لوازم جانبی موبایل و کامپیوتر</h3>
+                <p class="text-slate-500 text-xs mt-1">انواع گلس، قاب، شارژر، تجهیزات صوتی و ملزومات کامپیوتر با بالاترین کیفیت</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Category 1: Glasses & Covers -->
+                <div class="bg-slate-50 p-6 rounded-3xl border border-slate-200 shadow-sm hover:shadow-md transition">
+                    <div class="flex items-center gap-3 mb-4 pb-3 border-b border-slate-200">
+                        <div class="bg-blue-600 text-white p-3 rounded-2xl text-lg shadow">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+                        <h4 class="font-bold text-xl text-slate-900">گلس و گارد (قاب محافظ)</h4>
+                    </div>
+                    <ul class="space-y-3 text-sm text-slate-700">
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-brands fa-apple text-blue-600 mt-1"></i>
+                            <div><strong>آیفون (Apple):</strong> گلس سرامیکی، پرایوسی، مات و UV دار + گارد سیلیکونی، مگ‌سیف و ضد ضربه تمام مدل‌ها</div>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-mobile-screen text-blue-600 mt-1"></i>
+                            <div><strong>سامسونگ (Samsung):</strong> گلس محافظ صفحه تخت و خمیده (Edge) + انواع قاب‌های ضدضربه، ژله‌ای و فانتزی سری A و S و M</div>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-bolt text-blue-600 mt-1"></i>
+                            <div><strong>شیائومی (Xiaomi):</strong> گلس‌های مقاوم حرارت‌دیده + قاب‌های سیلیکونی و زرهی سری Redmi و POCO و Note</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Category 2: Audio & Airpods -->
+                <div class="bg-slate-50 p-6 rounded-3xl border border-slate-200 shadow-sm hover:shadow-md transition">
+                    <div class="flex items-center gap-3 mb-4 pb-3 border-b border-slate-200">
+                        <div class="bg-purple-600 text-white p-3 rounded-2xl text-lg shadow">
+                            <i class="fa-solid fa-headphones-simple"></i>
+                        </div>
+                        <h4 class="font-bold text-xl text-slate-900">هندزفری، هدست و ایرپاد</h4>
+                    </div>
+                    <ul class="space-y-3 text-sm text-slate-700">
+                        <li class="flex items-center gap-2.5">
+                            <i class="fa-solid fa-volume-high text-purple-600"></i>
+                            <div><strong>انواع هندزفری سیمی:</strong> جک 3.5 میلی‌متری، تایپ سی (Type-C) و لایتنینگ با بیس عالی و میکروفون باکیفیت</div>
+                        </li>
+                        <li class="flex items-center gap-2.5">
+                            <i class="fa-solid fa-circle-nodes text-purple-600"></i>
+                            <div><strong>هندزفری گردنی:</strong> مناسب ورزش، مکالمه طولانی و با باتری قدرتمند و نگهداری شارژ بالا</div>
+                        </li>
+                        <li class="flex items-center gap-2.5">
+                            <i class="fa-solid fa-ear-listen text-purple-600"></i>
+                            <div><strong>ایرپاد (AirPods):</strong> انواع هندزفری‌های بلوتوثی دوگوش باکیفیت عالی، محفظه شارژ و سنسور لمسی</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Category 3: Chargers & Cables -->
+                <div class="bg-slate-50 p-6 rounded-3xl border border-slate-200 shadow-sm hover:shadow-md transition">
+                    <div class="flex items-center gap-3 mb-4 pb-3 border-b border-slate-200">
+                        <div class="bg-emerald-600 text-white p-3 rounded-2xl text-lg shadow">
+                            <i class="fa-solid fa-plug-circle-bolt"></i>
+                        </div>
+                        <h4 class="font-bold text-xl text-slate-900">شارژر، کابل و رابط‌ها</h4>
+                    </div>
+                    <ul class="space-y-3 text-sm text-slate-700">
+                        <li class="flex items-center gap-2.5">
+                            <i class="fa-solid fa-bolt-lightning text-emerald-600"></i>
+                            <div><strong>شارژر اصلی:</strong> کلید شارژر فست شارژ 25W، 45W و کلگی‌های اورجینال سامسونگ، شیائومی و آیفون</div>
+                        </li>
+                        <li class="flex items-center gap-2.5">
+                            <i class="fa-solid fa-code-merge text-emerald-600"></i>
+                            <div><strong>کابل‌های شارژ:</strong> کابل Type-C به Type-C، کابل لایتنینگ آیفون، اندروید (Micro-USB) با روکش کنفی مقاوم</div>
+                        </li>
+                        <li class="flex items-center gap-2.5">
+                            <i class="fa-solid fa-wave-square text-emerald-600"></i>
+                            <div><strong>کابل AUX و دانگل بلوتوث:</strong> کابل انتقال صدا باکیفیت و دانگل بلوتوث AUX خودرو و اسپیکر</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Computer Accessories Sub-Section (Explicitly Requested Heading & Items) -->
+            <div class="mt-10 bg-gradient-to-br from-slate-900 to-indigo-950 text-white p-8 md:p-10 rounded-3xl shadow-xl">
+                <div class="flex items-center gap-3 mb-8 border-b border-slate-800 pb-4">
+                    <div class="bg-indigo-600 text-white p-3.5 rounded-2xl text-xl shadow-lg">
+                        <i class="fa-solid fa-computer"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-black text-2xl text-white">سربرگ جانبی کامپیوتر</h4>
+                        <p class="text-slate-400 text-xs mt-1">تجهیزات و ملزومات کامل سیستم‌های کامپیوتری و لپ‌تاپ</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+                    <div class="bg-white/10 p-4 rounded-2xl border border-white/10 flex items-center gap-3 hover:bg-white/15 transition">
+                        <i class="fa-solid fa-network-wired text-indigo-400 text-xl"></i>
+                        <div><strong class="block text-sm">کابل LAN</strong><span class="text-xs text-slate-300">شبکه و اینترنت پرسرعت</span></div>
+                    </div>
+
+                    <div class="bg-white/10 p-4 rounded-2xl border border-white/10 flex items-center gap-3 hover:bg-white/15 transition">
+                        <i class="fa-solid fa-tv text-indigo-400 text-xl"></i>
+                        <div><strong class="block text-sm">کابل HDMI</strong><span class="text-xs text-slate-300">انتقال تصویر و صدا</span></div>
+                    </div>
+
+                    <div class="bg-white/10 p-4 rounded-2xl border border-white/10 flex items-center gap-3 hover:bg-white/15 transition">
+                        <i class="fa-solid fa-plug text-indigo-400 text-xl"></i>
+                        <div><strong class="block text-sm">کابل برق</strong><span class="text-xs text-slate-300">پاور کیس و مانیتور</span></div>
+                    </div>
+
+                    <div class="bg-white/10 p-4 rounded-2xl border border-white/10 flex items-center gap-3 hover:bg-white/15 transition">
+                        <i class="fa-solid fa-computer-mouse text-indigo-400 text-xl"></i>
+                        <div><strong class="block text-sm">موس (ماوس)</strong><span class="text-xs text-slate-300">با سیم و بی‌سیم</span></div>
+                    </div>
+
+                    <div class="bg-white/10 p-4 rounded-2xl border border-white/10 flex items-center gap-3 hover:bg-white/15 transition">
+                        <i class="fa-solid fa-keyboard text-indigo-400 text-xl"></i>
+                        <div><strong class="block text-sm">کیبورد</strong><span class="text-xs text-slate-300">معمولی و گیمینگ</span></div>
+                    </div>
+
+                    <div class="bg-white/10 p-4 rounded-2xl border border-white/10 flex items-center gap-3 hover:bg-white/15 transition">
+                        <i class="fa-solid fa-chess-board text-indigo-400 text-xl"></i>
+                        <div><strong class="block text-sm">پد موس</strong><span class="text-xs text-slate-300">ساده و طبی ژله‌ای</span></div>
+                    </div>
+
+                    <div class="bg-white/10 p-4 rounded-2xl border border-white/10 flex items-center gap-3 hover:bg-white/15 transition">
+                        <i class="fa-solid fa-display text-indigo-400 text-xl"></i>
+                        <div><strong class="block text-sm">کابل VGA</strong><span class="text-xs text-slate-300">اتصال مانیتور قدیمی</span></div>
+                    </div>
+
+                    <div class="bg-white/10 p-4 rounded-2xl border border-white/10 flex items-center gap-3 hover:bg-white/15 transition">
+                        <i class="fa-solid fa-basket-shopping text-emerald-400 text-xl"></i>
+                        <div><strong class="block text-sm">استعلام قیمت</strong><span class="text-xs text-emerald-300">تماس بگیرید</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Online Net Services Section -->
-    <section id="net-services" class="py-16 bg-white border-b border-slate-100">
+    <section id="net-services" class="py-16 bg-slate-100 border-t border-slate-200">
         <div class="container mx-auto px-4">
             <div class="text-center mb-12">
                 <span class="bg-blue-100 text-blue-600 text-xs px-3 py-1 rounded-full font-bold">بخش خدمات اینترنتی</span>
@@ -85,8 +253,8 @@
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Service 1: وام ازدواج -->
-                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 hover:shadow-lg transition flex items-start gap-4">
+                <!-- Service 1 -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 hover:shadow-lg transition flex items-start gap-4">
                     <div class="bg-blue-600 text-white p-3.5 rounded-xl text-xl shrink-0 shadow-md">
                         <i class="fa-solid fa-file-contract"></i>
                     </div>
@@ -97,8 +265,8 @@
                     </div>
                 </div>
 
-                <!-- Service 2: ابلاغیه -->
-                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 hover:shadow-lg transition flex items-start gap-4">
+                <!-- Service 2 -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 hover:shadow-lg transition flex items-start gap-4">
                     <div class="bg-blue-600 text-white p-3.5 rounded-xl text-xl shrink-0 shadow-md">
                         <i class="fa-solid fa-envelope-open-text"></i>
                     </div>
@@ -109,8 +277,8 @@
                     </div>
                 </div>
 
-                <!-- Service 3: دریافت کد مالیاتی -->
-                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 hover:shadow-lg transition flex items-start gap-4">
+                <!-- Service 3 -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 hover:shadow-lg transition flex items-start gap-4">
                     <div class="bg-blue-600 text-white p-3.5 rounded-xl text-xl shrink-0 shadow-md">
                         <i class="fa-solid fa-file-invoice-dollar"></i>
                     </div>
@@ -120,108 +288,12 @@
                         <a href="https://rubika.ir/rezasavary69" target="_blank" class="text-blue-600 text-xs font-bold hover:underline flex items-center gap-1">سفارش در روبیکا <i class="fa-solid fa-arrow-left"></i></a>
                     </div>
                 </div>
-
-                <!-- Service 4: اظهارنامه -->
-                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 hover:shadow-lg transition flex items-start gap-4">
-                    <div class="bg-blue-600 text-white p-3.5 rounded-xl text-xl shrink-0 shadow-md">
-                        <i class="fa-solid fa-calculator"></i>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-lg text-slate-900 mb-1">اظهارنامه مالیاتی</h4>
-                        <p class="text-slate-500 text-xs leading-relaxed mb-3">تنظیم و ارسال انواع اظهارنامه‌های مالیاتی اشخاص حقیقی و حقوقی.</p>
-                        <a href="https://rubika.ir/rezasavary69" target="_blank" class="text-blue-600 text-xs font-bold hover:underline flex items-center gap-1">سفارش در روبیکا <i class="fa-solid fa-arrow-left"></i></a>
-                    </div>
-                </div>
-
-                <!-- Service 5: ثبت نام خودرو -->
-                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 hover:shadow-lg transition flex items-start gap-4">
-                    <div class="bg-blue-600 text-white p-3.5 rounded-xl text-xl shrink-0 shadow-md">
-                        <i class="fa-solid fa-car"></i>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-lg text-slate-900 mb-1">ثبت نام خودرو</h4>
-                        <p class="text-slate-500 text-xs leading-relaxed mb-3">ثبت‌نام طرح‌های ایران‌خودرو، سایپا و خودروهای وارداتی.</p>
-                        <a href="https://rubika.ir/rezasavary69" target="_blank" class="text-blue-600 text-xs font-bold hover:underline flex items-center gap-1">سفارش در روبیکا <i class="fa-solid fa-arrow-left"></i></a>
-                    </div>
-                </div>
-
-                <!-- Service 6: یارانه و کالابرگ -->
-                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 hover:shadow-lg transition flex items-start gap-4">
-                    <div class="bg-blue-600 text-white p-3.5 rounded-xl text-xl shrink-0 shadow-md">
-                        <i class="fa-solid fa-wallet"></i>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-lg text-slate-900 mb-1">یارانه و کالابرگ</h4>
-                        <p class="text-slate-500 text-xs leading-relaxed mb-3">پیگیری وضعیت یارانه، اعتراضات، تفکیک خانوار و اعتبار کالابرگ.</p>
-                        <a href="https://rubika.ir/rezasavary69" target="_blank" class="text-blue-600 text-xs font-bold hover:underline flex items-center gap-1">سفارش در روبیکا <i class="fa-solid fa-arrow-left"></i></a>
-                    </div>
-                </div>
-
-                <!-- Service 7: فیش حقوقی -->
-                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 hover:shadow-lg transition flex items-start gap-4">
-                    <div class="bg-blue-600 text-white p-3.5 rounded-xl text-xl shrink-0 shadow-md">
-                        <i class="fa-solid fa-receipt"></i>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-lg text-slate-900 mb-1">فیش حقوقی</h4>
-                        <p class="text-slate-500 text-xs leading-relaxed mb-3">دریافت و چاپ انواع فیش حقوقی دستگاه‌های دولتی و خصوصی.</p>
-                        <a href="https://rubika.ir/rezasavary69" target="_blank" class="text-blue-600 text-xs font-bold hover:underline flex items-center gap-1">سفارش در روبیکا <i class="fa-solid fa-arrow-left"></i></a>
-                    </div>
-                </div>
-
-                <!-- Service 8: فیش بیمه -->
-                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 hover:shadow-lg transition flex items-start gap-4">
-                    <div class="bg-blue-600 text-white p-3.5 rounded-xl text-xl shrink-0 shadow-md">
-                        <i class="fa-solid fa-shield-halved"></i>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-lg text-slate-900 mb-1">فیش بیمه</h4>
-                        <p class="text-slate-500 text-xs leading-relaxed mb-3">استعلام و دریافت سوابق و فیش حق بیمه تأمین اجتماعی.</p>
-                        <a href="https://rubika.ir/rezasavary69" target="_blank" class="text-blue-600 text-xs font-bold hover:underline flex items-center gap-1">سفارش در روبیکا <i class="fa-solid fa-arrow-left"></i></a>
-                    </div>
-                </div>
-
-                <!-- Service 9: سهام عدالت -->
-                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 hover:shadow-lg transition flex items-start gap-4">
-                    <div class="bg-blue-600 text-white p-3.5 rounded-xl text-xl shrink-0 shadow-md">
-                        <i class="fa-solid fa-chart-pie"></i>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-lg text-slate-900 mb-1">سهام عدالت</h4>
-                        <p class="text-slate-500 text-xs leading-relaxed mb-3">پیگیری وضعیت سهام عدالت، ثبت شماره شبا و به‌روزرسانی اطلاعات.</p>
-                        <a href="https://rubika.ir/rezasavary69" target="_blank" class="text-blue-600 text-xs font-bold hover:underline flex items-center gap-1">سفارش در روبیکا <i class="fa-solid fa-arrow-left"></i></a>
-                    </div>
-                </div>
-
-                <!-- Service 10: سجام -->
-                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 hover:shadow-lg transition flex items-start gap-4">
-                    <div class="bg-blue-600 text-white p-3.5 rounded-xl text-xl shrink-0 shadow-md">
-                        <i class="fa-solid fa-id-card"></i>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-lg text-slate-900 mb-1">سجام (احراز هویت)</h4>
-                        <p class="text-slate-500 text-xs leading-relaxed mb-3">ثبت نام سامانه سجام، ثبت‌نام بورس و احراز هویت غیرحضوری.</p>
-                        <a href="https://rubika.ir/rezasavary69" target="_blank" class="text-blue-600 text-xs font-bold hover:underline flex items-center gap-1">سفارش در روبیکا <i class="fa-solid fa-arrow-left"></i></a>
-                    </div>
-                </div>
-
-                <!-- Service 11: پاسپورت زیارتی و بین‌المللی -->
-                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 hover:shadow-lg transition flex items-start gap-4">
-                    <div class="bg-blue-600 text-white p-3.5 rounded-xl text-xl shrink-0 shadow-md">
-                        <i class="fa-solid fa-passport"></i>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-lg text-slate-900 mb-1">پاسپورت زیارتی و بین‌المللی</h4>
-                        <p class="text-slate-500 text-xs leading-relaxed mb-3">ثبت‌نام و پیگیری صدور گذرنامه زیارتی و عادی.</p>
-                        <a href="https://rubika.ir/rezasavary69" target="_blank" class="text-blue-600 text-xs font-bold hover:underline flex items-center gap-1">سفارش در روبیکا <i class="fa-solid fa-arrow-left"></i></a>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
 
     <!-- Main Navigation / Clickable Cards Section -->
-    <section id="services" class="py-16 bg-slate-50">
+    <section id="services" class="py-16 bg-white">
         <div class="container mx-auto px-4">
             <div class="text-center mb-12">
                 <h3 class="text-3xl font-black text-slate-900">خدمات تخصصی موبایل بابا ابی</h3>
@@ -229,97 +301,61 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-                <!-- Card 1: Software Services (Links to #software-section) -->
-                <a href="#software-section" class="p-8 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:border-blue-500 transition text-center group block">
+                <!-- Card 1 -->
+                <a href="#software-section" class="p-8 rounded-2xl bg-slate-50 border border-slate-200 shadow-sm hover:shadow-xl hover:border-blue-500 transition text-center group block">
                     <div class="bg-blue-100 text-blue-600 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto text-2xl mb-6 shadow-inner group-hover:bg-blue-600 group-hover:text-white transition">
                         <i class="fa-solid fa-laptop-code"></i>
                     </div>
                     <h4 class="font-bold text-xl mb-3 text-slate-900 group-hover:text-blue-600 transition">خدمات فوری نرم‌افزاری</h4>
-                    <p class="text-slate-500 text-sm leading-relaxed">کلیک کنید برای مشاهده لیست خدمات نرم‌افزاری، FRP، اپل آیدی، آیکلود و VPN.</p>
+                    <p class="text-slate-500 text-sm leading-relaxed">FRP، اپل آیدی، آیکلود و VPN.</p>
                     <span class="inline-block mt-4 text-xs font-bold text-blue-600">مشاهده جزئیات <i class="fa-solid fa-arrow-down mr-1"></i></span>
                 </a>
 
-                <!-- Card 2: Hardware / LCDs (Links to #hardware-section) -->
-                <a href="#hardware-section" class="p-8 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:border-blue-500 transition text-center group block">
+                <!-- Card 2 -->
+                <a href="#hardware-section" class="p-8 rounded-2xl bg-slate-50 border border-slate-200 shadow-sm hover:shadow-xl hover:border-blue-500 transition text-center group block">
                     <div class="bg-blue-100 text-blue-600 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto text-2xl mb-6 shadow-inner group-hover:bg-blue-600 group-hover:text-white transition">
                         <i class="fa-solid fa-screwdriver-wrench"></i>
                     </div>
-                    <h4 class="font-bold text-xl mb-3 text-slate-900 group-hover:text-blue-600 transition">تعمیرات تخصصی سخت‌افزار</h4>
-                    <p class="text-slate-500 text-sm leading-relaxed">کلیک کنید برای مشاهده لیست انواع ال‌سی‌دی‌های سامسونگ، شیائومی و آیفون.</p>
+                    <h4 class="font-bold text-xl mb-3 text-slate-900 group-hover:text-blue-600 transition">تعمیرات سخت‌افزار</h4>
+                    <p class="text-slate-500 text-sm leading-relaxed">تعویض ال‌سی‌دی‌های سامسونگ، شیائومی و آیفون.</p>
                     <span class="inline-block mt-4 text-xs font-bold text-blue-600">مشاهده جزئیات <i class="fa-solid fa-arrow-down mr-1"></i></span>
                 </a>
 
-                <!-- Card 3: Buy & Sell (Links to #products) -->
-                <a href="#products" class="p-8 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:border-blue-500 transition text-center group block">
+                <!-- Card 3 -->
+                <a href="#products" class="p-8 rounded-2xl bg-slate-50 border border-slate-200 shadow-sm hover:shadow-xl hover:border-blue-500 transition text-center group block">
                     <div class="bg-blue-100 text-blue-600 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto text-2xl mb-6 shadow-inner group-hover:bg-blue-600 group-hover:text-white transition">
                         <i class="fa-solid fa-mobile-button"></i>
                     </div>
                     <h4 class="font-bold text-xl mb-3 text-slate-900 group-hover:text-blue-600 transition">خرید و فروش موبایل</h4>
-                    <p class="text-slate-500 text-sm leading-relaxed">کلیک کنید برای مشاهده لیست گوشی‌ها و مدل‌های پرچمدار روز بازار.</p>
+                    <p class="text-slate-500 text-sm leading-relaxed">گوشی‌ها و مدل‌های پرچمدار روز بازار.</p>
                     <span class="inline-block mt-4 text-xs font-bold text-blue-600">مشاهده لیست گوشی‌ها <i class="fa-solid fa-arrow-down mr-1"></i></span>
                 </a>
             </div>
-
-            <!-- Detailed Target Section 1: Software -->
-            <div id="software-section" class="p-8 rounded-3xl bg-white border border-blue-200 shadow-md mb-12 scroll-mt-28">
-                <div class="flex items-center gap-3 mb-6">
-                    <div class="bg-blue-600 text-white p-3 rounded-xl text-xl"><i class="fa-solid fa-laptop-code"></i></div>
-                    <h4 class="font-bold text-2xl text-slate-900">لیست خدمات فوری نرم‌افزاری</h4>
-                </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200"><strong class="text-blue-900 block mb-1">FRP (گوگل اکانت)</strong><span class="text-xs text-slate-600">برداشتن و دور زدن قفل جیمیل بعد از ریست</span></div>
-                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200"><strong class="text-blue-900 block mb-1">آیکلود (iCloud)</strong><span class="text-xs text-slate-600">خدمات تخصصی و امنیتی حساب‌های آیفون</span></div>
-                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200"><strong class="text-blue-900 block mb-1">اپل آیدی (Apple ID)</strong><span class="text-xs text-slate-600">ساخت اپل‌آیدی معتبر، شخصی و امن</span></div>
-                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200"><strong class="text-blue-900 block mb-1">اشتراک برنامه‌های ایرانی</strong><span class="text-xs text-slate-600">دسترسی به استورها و برنامه‌های ایرانی iOS</span></div>
-                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200"><strong class="text-blue-900 block mb-1">نصب بازی و برنامه</strong><span class="text-xs text-slate-600">پکیج کامل نرم‌افزار و بازی‌های روز اندروید/آیفون</span></div>
-                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200"><strong class="text-blue-900 block mb-1">VPN و ابزارهای اتصال</strong><span class="text-xs text-slate-600">راه‌اندازی و تنظیم فیلترشکن و ابزارهای امن</span></div>
-                </div>
-            </div>
-            <!-- Detailed Target Section 2: Hardware (LCDs) -->
-            <div id="hardware-section" class="p-8 rounded-3xl bg-white border border-blue-200 shadow-md scroll-mt-28">
+            <!-- Hardware Section -->
+            <div id="hardware-section" class="p-8 rounded-3xl bg-slate-50 border border-blue-200 shadow-md scroll-mt-28">
                 <div class="flex items-center gap-3 mb-6">
                     <div class="bg-blue-600 text-white p-3 rounded-xl text-xl"><i class="fa-solid fa-screwdriver-wrench"></i></div>
                     <h4 class="font-bold text-2xl text-slate-900">لیست کامل ال‌سی‌دی‌ها (سخت‌افزار)</h4>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <!-- Samsung LCDs -->
-                    <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200">
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200">
                         <h5 class="font-bold text-blue-900 text-lg mb-3 pb-2 border-b border-slate-200">سامسونگ</h5>
-                        <p class="text-xs text-slate-700 leading-relaxed">
-                            <strong>سری A:</strong> A10، A10s، A11، A12، A13، A14، A15، A20، A20s، A21s، A22، A23، A24، A25، A30، A30s، A31، A32، A33، A34، A35، A50، A51، A52، A53، A54، A55، A70، A71، A72، A73<br><br>
-                            <strong>سری M و J:</strong> J2 Pro، J5 Pro، J7 Pro، J4، J6، M11، M12، M21، M31، M32<br><br>
-                            <strong>سری پرچمدار:</strong> S8 تا S24 (و اولترا)، Note 8 تا Note 20
-                        </p>
+                        <p class="text-xs text-slate-700 leading-relaxed">سری A (از A10 تا A55)، سری M و پرچمداران S و Note</p>
                     </div>
-                    <!-- Xiaomi LCDs -->
-                    <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200">
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200">
                         <h5 class="font-bold text-blue-900 text-lg mb-3 pb-2 border-b border-slate-200">شیائومی</h5>
-                        <p class="text-xs text-slate-700 leading-relaxed">
-                            <strong>سری Redmi:</strong> Redmi 9، 9A، 9T، 10، 10C، 12، 13C، Note 8، Note 9، Note 10، Note 10 Pro، Note 11، Note 11 Pro، Note 12، Note 13<br><br>
-                            <strong>سری POCO:</strong> M3، M4 Pro، X3، X3 Pro، X4 Pro، X5 Pro، F3، F4<br><br>
-                            <strong>سری Mi:</strong> Mi 11 Lite، Mi 12 Lite
-                        </p>
+                        <p class="text-xs text-slate-700 leading-relaxed">سری Redmi، POCO و سری Note</p>
                     </div>
-
-                    <!-- Apple LCDs -->
-                    <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200">
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200">
                         <h5 class="font-bold text-blue-900 text-lg mb-3 pb-2 border-b border-slate-200">آیفون (اپل)</h5>
-                        <p class="text-xs text-slate-700 leading-relaxed">
-                            آیفون 6، 6s، 7، 8، 7 پلاس، 8 پلاس<br>
-                            آیفون X، XR، XS، XS Max<br>
-                            آیفون 11، 11 پرو، 11 پرو مکس<br>
-                            آیفون 12، 12 پرو، 12 پرو مکس<br>
-                            آیفون 13، 13 پرو، 13 پرو مکس<br>
-                            آیفون 14، 14 پرو، 14 پرو مکس<br>
-                            آیفون 15، 15 پرو، 15 پرو مکس
-                        </p>
+                        <p class="text-xs text-slate-700 leading-relaxed">از آیفون 6 تا آیفون 15 پرو مکس</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- Products Section (Flagships Only) -->
-    <section id="products" class="py-16 bg-white scroll-mt-20">
+    <!-- Products Section (Flagships) -->
+    <section id="products" class="py-16 bg-white border-t border-slate-200 scroll-mt-20">
         <div class="container mx-auto px-4">
             <div class="text-center mb-12">
                 <span class="bg-blue-100 text-blue-600 text-xs px-3 py-1 rounded-full font-bold">بخش تجاری</span>
@@ -328,97 +364,192 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Flagship Brand 1: Apple -->
-                <div class="bg-slate-50 rounded-2xl shadow-sm overflow-hidden hover:shadow-xl transition border border-slate-200/60 p-6 flex flex-col justify-between">
+                <div class="bg-slate-50 rounded-2xl shadow-sm overflow-hidden border border-slate-200 p-6 flex flex-col justify-between">
                     <div>
-                        <div class="bg-blue-600 text-white w-12 h-12 rounded-xl flex items-center justify-center text-xl mb-4 shadow-md">
-                            <i class="fa-brands fa-apple"></i>
-                        </div>
-                        <h4 class="font-bold text-xl text-slate-900 mb-3">پرچمداران آیفون (اپل)</h4>
-                        <ul class="space-y-2 text-sm text-slate-600 mb-6">
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-chevron-left text-xs text-blue-600"></i> آیفون 16 پرو مکس / پرو</li>
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-chevron-left text-xs text-blue-600"></i> آیفون 15 پرو مکس / پرو</li>
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-chevron-left text-xs text-blue-600"></i> آیفون 14 پرو مکس / پرو</li>
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-chevron-left text-xs text-blue-600"></i> آیفون 13 پرو مکس / پرو</li>
-                        </ul>
+                        <div class="bg-blue-600 text-white w-12 h-12 rounded-xl flex items-center justify-center text-xl mb-4"><i class="fa-brands fa-apple"></i></div>
+                        <h4 class="font-bold text-xl text-slate-900 mb-3">پرچمداران آیفون</h4>
+                        <p class="text-sm text-slate-600 mb-6">آیفون 13 تا 16 پرو مکس</p>
                     </div>
-                    <div class="pt-4 border-t border-slate-200/60 flex items-center justify-between">
-                        <span class="font-black text-blue-900 text-sm">استعلام قیمت روز</span>
-                        <a href="tel:09333472977" class="bg-blue-600 text-white px-4 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 transition shadow-md shadow-blue-600/20">تماس بگیرید</a>
-                    </div>
+                    <a href="tel:09333472977" class="bg-blue-600 text-white text-center py-2.5 rounded-xl text-sm font-bold hover:bg-blue-700 transition">تماس برای استعلام قیمت</a>
                 </div>
-                <!-- Flagship Brand 2: Samsung -->
-                <div class="bg-slate-50 rounded-2xl shadow-sm overflow-hidden hover:shadow-xl transition border border-slate-200/60 p-6 flex flex-col justify-between">
+
+                <div class="bg-slate-50 rounded-2xl shadow-sm overflow-hidden border border-slate-200 p-6 flex flex-col justify-between">
                     <div>
-                        <div class="bg-blue-600 text-white w-12 h-12 rounded-xl flex items-center justify-center text-xl mb-4 shadow-md">
-                            <i class="fa-solid fa-mobile-screen-button"></i>
-                        </div>
+                        <div class="bg-blue-600 text-white w-12 h-12 rounded-xl flex items-center justify-center text-xl mb-4"><i class="fa-solid fa-mobile-screen-button"></i></div>
                         <h4 class="font-bold text-xl text-slate-900 mb-3">پرچمداران سامسونگ</h4>
-                        <ul class="space-y-2 text-sm text-slate-600 mb-6">
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-chevron-left text-xs text-blue-600"></i> سری گلکسی S26 Ultra / S26+</li>
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-chevron-left text-xs text-blue-600"></i> سری گلکسی S25 Ultra / S25+</li>
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-chevron-left text-xs text-blue-600"></i> سری گلکسی S24 Ultra / S24+</li>
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-chevron-left text-xs text-blue-600"></i> گوشی‌های تاشو Z Fold و Z Flip</li>
-                        </ul>
+                        <p class="text-sm text-slate-600 mb-6">گلکسی S24, S25, S26 Ultra و تاشو</p>
                     </div>
-                    <div class="pt-4 border-t border-slate-200/60 flex items-center justify-between">
-                        <span class="font-black text-blue-900 text-sm">استعلام قیمت روز</span>
-                        <a href="tel:09333472977" class="bg-blue-600 text-white px-4 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 transition shadow-md shadow-blue-600/20">تماس بگیرید</a>
-                    </div>
+                    <a href="tel:09333472977" class="bg-blue-600 text-white text-center py-2.5 rounded-xl text-sm font-bold hover:bg-blue-700 transition">تماس برای استعلام قیمت</a>
                 </div>
-                <!-- Flagship Brand 3: Xiaomi -->
-                <div class="bg-slate-50 rounded-2xl shadow-sm overflow-hidden hover:shadow-xl transition border border-slate-200/60 p-6 flex flex-col justify-between">
+
+                <div class="bg-slate-50 rounded-2xl shadow-sm overflow-hidden border border-slate-200 p-6 flex flex-col justify-between">
                     <div>
-                        <div class="bg-blue-600 text-white w-12 h-12 rounded-xl flex items-center justify-center text-xl mb-4 shadow-md">
-                            <i class="fa-solid fa-bolt"></i>
-                        </div>
+                        <div class="bg-blue-600 text-white w-12 h-12 rounded-xl flex items-center justify-center text-xl mb-4"><i class="fa-solid fa-bolt"></i></div>
                         <h4 class="font-bold text-xl text-slate-900 mb-3">پرچمداران شیائومی</h4>
-                        <ul class="space-y-2 text-sm text-slate-600 mb-6">
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-chevron-left text-xs text-blue-600"></i> شیائومی سری 15 اولترا / پرو</li>
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-chevron-left text-xs text-blue-600"></i> شیائومی سری 14 اولترا / پرو</li>
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-chevron-left text-xs text-blue-600"></i> شیائومی سری 13 اولترا / پرو</li>
-                        </ul>
+                        <p class="text-sm text-slate-600 mb-6">سری 13, 14 و 15 اولترا و پرو</p>
                     </div>
-                    <div class="pt-4 border-t border-slate-200/60 flex items-center justify-between">
-                        <span class="font-black text-blue-900 text-sm">استعلام قیمت روز</span>
-                        <a href="tel:09333472977" class="bg-blue-600 text-white px-4 py-2 rounded-xl text-sm font-bold hover:bg-blue-700 transition shadow-md shadow-blue-600/20">تماس بگیرید</a>
-                    </div>
+                    <a href="tel:09333472977" class="bg-blue-600 text-white text-center py-2.5 rounded-xl text-sm font-bold hover:bg-blue-700 transition">تماس برای استعلام قیمت</a>
+                </div>
+                </div>
+        </div>
+    </section>
+    <!-- Articles Section -->
+    <section id="articles" class="py-16 bg-slate-50 border-t border-slate-200 scroll-mt-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <span class="bg-amber-100 text-amber-700 text-xs px-3 py-1 rounded-full font-bold">وبلاگ و آموزش</span>
+                <h3 class="text-3xl font-black text-slate-900 mt-2">مقالات و ترفندهای کاربردی موبایل</h3>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                    <h4 class="font-bold text-lg text-slate-900 mb-2">چگونه عمر باتری گوشی هوشمند خود را افزایش دهیم؟</h4>
+                    <p class="text-slate-600 text-xs leading-relaxed">نکات طلایی شارژ اصولی و حفظ سلامت باتری دستگاه.</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                    <h4 class="font-bold text-lg text-slate-900 mb-2">نکات حیاتی هنگام خرید گوشی کارکرده و دست دوم</h4>
+                    <p class="text-slate-600 text-xs leading-relaxed">چگونه مطمئن شویم گوشی دست دوم تعمیر نشده است؟</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                    <h4 class="font-bold text-lg text-slate-900 mb-2">دلایل کند شدن گوشی و روش‌های ساده افزایش سرعت</h4>
+                    <p class="text-slate-600 text-xs leading-relaxed">پاکسازی فایل‌های پنهان و مدیریت برنامه‌ها.</p>
                 </div>
             </div>
         </div>
     </section>
-    <!-- Footer / Contact -->
-    <footer id="contact" class="bg-slate-900 text-white pt-16 pb-8 border-t border-slate-800">
+    <!-- Club Section -->
+    <section id="club" class="py-16 bg-gradient-to-r from-emerald-900 to-teal-900 text-white">
+        <div class="container mx-auto px-4 max-w-3xl text-center">
+            <span class="bg-emerald-700/60 text-emerald-200 text-xs px-3 py-1 rounded-full font-bold">باشگاه مشتریان بابا ابی</span>
+            <h3 class="text-3xl font-black mt-3 mb-4">عضویت در باشگاه مشتریان ویژه اهواز</h3>
+            <p class="text-emerald-100 text-sm mb-8">با ثبت شماره موبایل در تخفیف‌های دوره‌ای لوازم جانبی و خدمات شریک شوید.</p>
+            <form onsubmit="joinClub(event)" class="flex flex-col sm:flex-row gap-3 justify-center max-w-lg mx-auto">
+                <input type="tel" id="clubPhone" required placeholder="شماره موبایل (09123456789)" class="bg-white/10 border border-emerald-500/40 rounded-xl px-4 py-3 text-sm text-white placeholder-emerald-300 focus:outline-none flex-1" dir="ltr">
+                <button type="submit" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-6 py-3 rounded-xl transition">عضویت رایگان</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Quick Order Form Section -->
+    <section id="order-form" class="py-16 bg-white border-t border-slate-200">
+        <div class="container mx-auto px-4 max-w-2xl">
+            <div class="bg-slate-50 p-8 rounded-3xl shadow-xl border border-slate-200">
+                <div class="text-center mb-8">
+                    <h3 class="text-2xl font-black text-slate-900">فرم ثبت سفارش یا استعلام قیمت</h3>
+                </div>
+                <form onsubmit="sendToRubika(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">نام و نام خانوادگی:</label>
+                        <input type="text" id="clientName" required class="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm" placeholder="مثلاً: علی رضایی">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">شماره تماس:</label>
+                        <input type="tel" id="clientPhone" required class="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm" placeholder="09123456789" dir="ltr">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">نوع خدمت یا محصول:</label>
+                        <select id="serviceType" class="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm">
+                            <option>خرید لوازم جانبی (گلس، قاب، ایرپاد و...)</option>
+                            <option>جانبی کامپیوتر (موس، کیبورد، کابل LAN و...)</option>
+                            <option>خدمات نرم‌افزاری و سخت‌افزاری موبایل</option>
+                            <option>کافی‌نت آنلاین (ثبت‌نام، وام، مالیات)</option>
+                            <option>سایر موارد</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">توضیحات درخواست:</label>
+                        <textarea id="clientDesc" rows="3" class="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm" placeholder="مدل گوشی یا قطعه مورد نظر را بنویسید..."></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 rounded-xl transition shadow-lg flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-paper-plane"></i>
+                        <span>ارسال درخواست به مدیریت در روبیکا</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <!-- Floating Action Buttons -->
+    <div class="fixed bottom-6 left-6 z-50 flex flex-col gap-3">
+        <a href="https://rubika.ir/rezasavary69" target="_blank" title="چت در روبیکا" class="bg-purple-600 hover:bg-purple-700 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl transition transform hover:scale-110 text-2xl">
+            <i class="fa-solid fa-r"></i>
+        </a>
+        <a href="tel:09333472977" title="تماس سریع" class="bg-emerald-600 hover:bg-emerald-700 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl transition transform hover:scale-110 text-xl">
+            <i class="fa-solid fa-phone"></i>
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-white pt-16 pb-8 border-t border-slate-800">
         <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
             <div>
                 <h4 class="text-2xl font-black mb-4 text-blue-400">بابا ابی و کافی‌نت آنلاین</h4>
-                <p class="text-slate-400 text-sm leading-relaxed">مرکز تخصصی خرید و فروش موبایل، لوازم جانبی و انجام کلیه خدمات اینترنتی، مالیاتی و ثبت‌نام‌های دولتی با مدیریت در اهواز[cite: 2].</p>
+                <p class="text-slate-400 text-sm leading-relaxed">مرکز تخصصی لوازم جانبی موبایل و کامپیوتر، خرید و فروش گوشی و خدمات اینترنتی در اهواز.</p>
             </div>
             <div>
                 <h4 class="text-lg font-bold mb-4 text-white">دسترسی سریع</h4>
                 <ul class="space-y-2.5 text-slate-400 text-sm">
-                    <li><a href="#" class="hover:text-blue-400 transition">صفحه اصلی</a></li>
+                    <li><a href="#accessories" class="hover:text-blue-400 transition">لوازم جانبی و کامپیوتر</a></li>
                     <li><a href="#net-services" class="hover:text-blue-400 transition">کافی‌نت آنلاین</a></li>
                     <li><a href="#products" class="hover:text-blue-400 transition">فروشگاه موبایل</a></li>
-                    <li><a href="#services" class="hover:text-blue-400 transition">تعمیرات و خدمات</a></li>
+                    <li><a href="#services" class="hover:text-blue-400 transition">تعمیرات</a></li>
                 </ul>
             </div>
             <div>
                 <h4 class="text-lg font-bold mb-4 text-white">ارتباط با مدیریت (امیری)</h4>
-                <p class="text-slate-400 text-sm mb-3"><i class="fa-solid fa-phone ml-2 text-blue-400"></i> تلفن تماس: <span dir="ltr" class="inline-block">09333472977</span></p>
-                <p class="text-slate-400 text-sm mb-4 leading-relaxed"><i class="fa-solid fa-location-dot ml-2 text-blue-400"></i> آدرس: خوزستان، اهواز، کمپلو جنوبی (خشایار)، خیابان زینب بین اسلامی و میمندی[cite: 2]</p>
-                <div class="flex space-x-3 space-x-reverse text-xl pt-2">
-                    <a href="https://rubika.ir/rezasavary69" target="_blank" class="bg-slate-800 p-3 rounded-xl text-slate-300 hover:text-white hover:bg-purple-600 transition flex items-center gap-2 text-sm">
-                        <i class="fa-solid fa-r text-lg"></i>
-                        <span>روبیکا: rezasavary69</span>
-                    </a>
-                </div>
+                <p class="text-slate-400 text-sm mb-3"><i class="fa-solid fa-phone ml-2 text-blue-400"></i> تلفن: <span dir="ltr">09333472977</span></p>
+                <p class="text-slate-400 text-sm mb-4"><i class="fa-solid fa-location-dot ml-2 text-blue-400"></i> اهواز، کمپلو جنوبی (خشایار)، خیابان زینب بین اسلامی و میمندی</p>
+                <a href="https://rubika.ir/rezasavary69" target="_blank" class="inline-flex items-center gap-2 bg-slate-800 px-4 py-2.5 rounded-xl text-sm text-slate-300 hover:text-white hover:bg-purple-600 transition">
+                    <i class="fa-solid fa-r"></i> <span>روبیکا: rezasavary69</span>
+                </a>
             </div>
-        </div>
-        <div class="border-t border-slate-800/80 pt-6 text-center text-slate-500 text-xs">
+            </div>
+        <div class="border-t border-slate-800 pt-6 text-center text-slate-500 text-xs">
             تمامی حقوق و امتیازات این وب‌سایت متعلق به فروشگاه موبایل و کافی‌نت بابا ابی می‌باشد. © ۱۴۰۵
         </div>
     </footer>
+    <!-- Scripts -->
+    <script>
+        const music = document.getElementById('bgMusic');
+        const musicBtn = document.getElementById('musicBtn');
+        const musicIcon = document.getElementById('musicIcon');
+        const musicText = document.getElementById('musicText');
+        let isPlaying = false;
 
+        function toggleMusic() {
+            if (isPlaying) {
+                music.pause();
+                musicIcon.className = "fa-solid fa-music text-blue-600";
+                musicText.innerText = "موزیک ملایم";
+                musicBtn.classList.remove('bg-blue-100', 'border-blue-300');
+                isPlaying = false;
+            } else {
+                music.play().then(() => {
+                    musicIcon.className = "fa-solid fa-volume-high text-emerald-600 animate-pulse";
+                    musicText.innerText = "درحال پخش موزیک";
+                    musicBtn.classList.add('bg-blue-100', 'border-blue-300');
+                    isPlaying = true;
+                }).catch(e => {
+                    alert("لطفاً مجدد کلیک کنید تا صوت پخش شود.");
+                });
+            }
+        }
+
+        function joinClub(event) {
+            event.preventDefault();
+            const phone = document.getElementById('clubPhone').value;
+            alert('ثبت‌نام شما با شماره ' + phone + ' در باشگاه مشتریان بابا ابی انجام شد!');
+            document.getElementById('clubPhone').value = '';
+        }
+
+        function sendToRubika(event) {
+            event.preventDefault();
+            const name = document.getElementById('clientName').value;
+            const phone = document.getElementById('clientPhone').value;
+            const service = document.getElementById('serviceType').value;
+            const desc = document.getElementById('clientDesc').value;
+
+            const message = `سلام، سفارش جدید لوازم جانبی/خدمات:\n\n👤 نام: ${name}\n📞 شماره: ${phone}\n📌 بخش: ${service}\n📝 توضیحات: ${desc}`;
+            window.open(`https://rubika.ir/rezasavary69?text=${encodeURIComponent(message)}`, '_blank');
+        }
+    </script>
 </body>
 </html>
